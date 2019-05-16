@@ -29,6 +29,8 @@
 
 ![1556506128732](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1556506128732.png)
 
+
+
 ![1556506151019](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1556506151019.png)
 
 
@@ -86,18 +88,26 @@ GET /rest/api/deleteUser?id=1 --> DELETE /user/users/1  删除一个用户
 
 
 
+
+
 ![1558021177467](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1558021177467.png)
 
 
 
+
+
 1. 创建一个Limit注解
+
 2. 
 
 ![1558021253503](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1558021253503.png)
 
 
 
+
 3. 在 **LimiterIntercepeter** 中调用 `execute` 方法传入我们的 Lua 脚本内容，然后通过返回值判断是否超出我们预期的范围，超出则给出错误提示。
+
+
 
 4. 在控制层中添加@Limit()注解，在Redis中生成过期时间为100s的 key = test的记录。
 
@@ -105,14 +115,22 @@ GET /rest/api/deleteUser?id=1 --> DELETE /user/users/1  删除一个用户
 
 
 
+
+
 ![1558022111737](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1558022111737.png)
+
+
 
 
 
 ![1558022144114](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1558022144114.png)
 
 
+
+
 在超过十次访问后，出现自定义的500错误。因为达到了自己设定的阈值，系统出现错误。
+
+
 
 
 ![1558022192283](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1558022192283.png)
@@ -129,11 +147,15 @@ GET /rest/api/deleteUser?id=1 --> DELETE /user/users/1  删除一个用户
 ![1558021580187](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1558021580187.png)
 
 
+
+
 在POM中加入了 spring-boot-starter-security 依赖后，未经配置，系统会自动拦截。初始会进入验证界面
 
 
 
+
 ![1558021706921](https://github.com/PegasusLiang/EE_homework_2/blob/master/%E4%BD%9C%E4%B8%9A%E6%88%AA%E5%9B%BE/1558021706921.png)
+
 
 
 
