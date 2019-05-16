@@ -5,6 +5,8 @@ import com.lhm.jpa13.entity.UserEntity;
 import com.lhm.jpa13.jpa.UserJPA;
 import com.lhm.jpa13.service.UserQueryService;
 import com.lhm.jpa13.service.UserQueryServiceImpl;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,6 +41,8 @@ public class UserController{
 //        return "user/userlist";
 //    }
 
+    @ApiOperation(value="获取用户列表", notes="获取用户列表")
+    @RequestMapping(value = "users", method = RequestMethod.GET)
     @GetMapping("/users")
     public String toUserList(Model model){
         Collection<UserEntity> users = userQueryServiceImpl.getAllusers();//获取所有的user，findAll()是自带的
@@ -48,6 +52,8 @@ public class UserController{
     }
 
     //显示需要修改的信息
+    @ApiOperation(value="获取用户详细信息", notes="根据url的id来获取用户详细信息")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "path")
     @GetMapping("/user/{id}")
     public String toEditUser(Long id,Model model){
         UserEntity user = userQueryServiceImpl.getById(id);//根据id查找用户
@@ -63,13 +69,18 @@ public class UserController{
         return "user/user_add";
     }
 
-    //上传修改用户信息
+
+    @ApiOperation(value="创建用户", notes="根据User对象创建用户")
+    @ApiImplicitParam(name = "user", value = "用户详细实体user", required = true, dataType = "User")
     @PostMapping("/user")
     public String updateUser(UserEntity user){
         userQueryServiceImpl.addUser(user);
         return "redirect:/users";
     }
 
+
+    @ApiOperation(value="删除用户", notes="根据url的id来指定删除用户")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long", paramType = "path")
     @DeleteMapping("/user/{id}")
     public String toDeleteUser(Long id, Model model){
         userQueryServiceImpl.deletePerson(id);
